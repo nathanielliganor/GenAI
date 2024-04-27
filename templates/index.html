@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Aggregator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        header {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .news-topics {
+            margin: 20px 0;
+        }
+        .news-topic {
+            margin: 10px 0;
+        }
+        .news-topic label {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="width: 70%; text-align: left;">
+              <h1 style="font-family: 'New York Times', serif; font-size: 72px; padding-left: 0px;">News Aggregator</h1>
+            </div>
+            <div style="width: 30%; text-align: right;">
+              <h3 id="liveTime" style="margin-bottom: 3px;"></h3>
+              <h5 id="liveLocation"></h5>
+            </div>
+        </div> 
+        <script src="app.js"></script>
+        <div style="height: 6px; width: 100%; background-color: black;"></div>
+    </header>
+        <section class="news-topics">
+            <h2>Select Your News Topics</h2> 
+        <form method="POST" action="/">
+            {% for interest in interests %}
+                <div class="news-topics">
+                    <input type="checkbox" name="interest" value="{{ interest }}">
+                    <label for="{{ interest }}">{{ interest }}</label>
+                </div>
+            {% endfor %}
+            <button type="submit">Get News</button>
+        </form>
+        </section>
+    </div>
+</body>
+</html>
